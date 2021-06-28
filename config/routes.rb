@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :product_searches
   resources :merchant_snap_data
   resources :page_views
+  resources :merchant_sales
 end
