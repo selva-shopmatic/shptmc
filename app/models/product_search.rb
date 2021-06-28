@@ -2,7 +2,7 @@
 class ProductSearch < ElasticModel
 
   searchkick index_name: "shpmtc_product_searches_#{Rails.env}"
-  index_name "shpmtc_product_searches_#{Rails.env}"
+  index_name "shpmtp_product_searches_#{Rails.env}"
   self.primary_key = :id
   self.search_klass = 'Product'
   #@primary_es_connection = ElasticSearch::Base.connection("primary")
@@ -22,7 +22,7 @@ class ProductSearch < ElasticModel
     options = {
       load: false,
       fields: ['product_name^10', 'category_name^8', 'variant_names^8', 'sku^7', 'canonical_name^6'],
-      where: { site_id: site_id.to_i, status: 1 },
+      where: { site_id: 1, status: 1 },
       misspellings: { below: 3, edit_distance: 2 },
       limit: limit.to_i,
       offset: offset.to_i
