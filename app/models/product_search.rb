@@ -22,7 +22,7 @@ class ProductSearch < ElasticModel
     options = {
       load: false,
       fields: ['product_name^10', 'category_name^8', 'variant_names^8', 'sku^7', 'canonical_name^6'],
-      where: { site_id: 1, status: 1 },
+      where: { site_id: site_id, status: 1 },
       misspellings: { below: 3, edit_distance: 2 },
       limit: limit.to_i,
       offset: offset.to_i

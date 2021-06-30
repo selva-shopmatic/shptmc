@@ -2,9 +2,9 @@ class MerchantSnapDataController < ActionController::Base
 
     skip_before_action :verify_authenticity_token
 
-    def index
-        data = MerchantSnapDatum.get_data(params[:query]).results
-        render json: data.to_json, status: 200
+    def reindex
+        data = MerchantSnapDatum.reindex
+        render json: {messages: "successfully reindex completed"}, status: 200
     end
     def update
         merchant_snap_data = MerchantSnapDatum.find_by_merchant_id(params[:query])
@@ -16,8 +16,12 @@ class MerchantSnapDataController < ActionController::Base
         merchant_snap_data.delete
         render json: {messages:'successfully deleted'}, status: 200
     end
-    def show
+    def search
         merchant_snap_data = MerchantSnapDatum.find_by_merchant_id(params[:query])
         render json: merchant_snap_data.to_json, status: 200
+    end
+    def create 
+        data = MerchantSnapDatum.create(params[:query])
+        render json: data.to_json, status: 200
     end
 end
