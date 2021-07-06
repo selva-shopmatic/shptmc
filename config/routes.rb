@@ -2,33 +2,24 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :api do
     namespace :v1 do
+        post "product_searches/search" => "product_searches#search"
+        post "product_searches/reindex" => "product_searches#reindex"
+        post "product_searches/refresh" => "product_searches#refresh"
+        
+        post "merchant_snap_data/search" => "merchant_snap_data#search"
+        post "merchant_snap_data/reindex" => "merchant_snap_data#reindex"
+        post "merchant_snap_data/update" => "merchant_snap_data#update"
+        post "merchant_snap_data/create" => "merchant_snap_data#update"
+        post "merchant_snap_data/delete" => "merchant_snap_data#delete"
 
-      namespace :product_search do
-        post "search" => "product_searches#search"
-        post "reindex" => "product_searches#reindex"
-        post "refresh" => "product_searches#refresh"
-      end
+        post "merchant_sales/search" => "merchant_sales#search"
+        post "merchant_sales/reindex" => "merchant_sales#reindex"
 
-      namespace :merchant_snap_data do
-        post "search" => "merchant_snap_data#search"
-        post "reindex" => "merchant_snap_data#reindex"
-        post "update" => "merchant_snap_data#update"
-        post "create" => "merchant_snap_data#update"
-        post "delete" => "merchant_snap_data#delete"
-      end
-
-      namespace :merchant_sales do
-        post "search" => "merchant_sales#search"
-        post "reindex" => "merchant_sales#reindex"
-      end
-
-      namespace :page_views do
-        post "search" => "page_view#search"
-        post "reindex" => "page_view#reindex"
-        post "update" => "page_view#update"
-        post "create" => "page_view#update"
-        post "delete" => "page_view#delete"
-      end
+        post "page_views/search" => "page_views#search"
+        post "page_views/reindex" => "page_views#reindex"
+        post "page_views/update" => "page_views#update"
+        post "page_views/create" => "page_views#update"
+        post "page_views/delete" => "page_views#delete"
 
     end
   end
